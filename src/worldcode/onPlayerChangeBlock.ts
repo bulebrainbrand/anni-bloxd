@@ -4,7 +4,6 @@ import { GamePhaseManager } from "../module/gamePhaseManager";
 import { checkBlockCanMine, tryMineOre } from "../module/mineOreManager";
 import { checkCanChange } from "../module/canChangeArea";
 import { breakNexus, isBreakingNexus } from "../module/nexusBreakManager";
-import { updateRightInfoText } from "../module/rightInfoText";
 
 api.setCallbackValueFallback("onPlayerChangeBlock", "preventChange");
 (globalThis as any).onPlayerChangeBlock = (
@@ -21,7 +20,5 @@ api.setCallbackValueFallback("onPlayerChangeBlock", "preventChange");
   if (checkBlockCanMine(fromBlock))
     return tryMineOre(x, y, z, fromBlock) ? undefined : "preventChange";
   if (isBreakingNexus(fromBlock))
-    return breakNexus(playerId, x, y, z)
-      ? (updateRightInfoText(), undefined)
-      : "preventChange";
+    return breakNexus(playerId, x, y, z) ? undefined : "preventChange";
 };

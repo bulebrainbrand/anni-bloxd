@@ -6,8 +6,13 @@ import { GamePhaseManager } from "./gamePhaseManager";
 import { PhaseManager } from "./phaseManager";
 import { getTeam } from "./playerTeam";
 import { NEXUS_BLOCK, NEXUS_COOEDINATE_BY_TEAM } from "../consts";
+import {
+  isNexusBlock,
+  replaceNexusAndSetTimeoutRemove,
+} from "./nexusBlockManager";
+import { updateRightInfoText } from "./rightInfoText";
 
-export const isBreakingNexus = (block: BlockName) => block === NEXUS_BLOCK;
+export const isBreakingNexus = (block: BlockName) => isNexusBlock(block);
 
 const isSameCoordinate = (
   x: number,
@@ -32,7 +37,7 @@ export const breakNexus = (
   x: number,
   y: number,
   z: number,
-) => {
+): boolean => {
   if (GamePhaseManager.getPhase() !== 3)
     throw new Error("cannot break nexus yet");
   const phase = PhaseManager.getPhase();
@@ -42,5 +47,8 @@ export const breakNexus = (
   if (team === false) return false;
   const playerTeam = getTeam(playerId);
   if (team === playerTeam) return false;
-  return NexusHpHandler.breakNexus(team, phase);
+  replaceNexusAndSetTimeoutRemove(x, y, z);
+  NexusHpHandler.breakNexus(team, phase);
+  updateRightInfoText();
+  return true;
 };
