@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "bloxd.io.d.ts": "^3.4.2",
+    "bloxdtypescriptcodebundler": "^1.0.0"
+  }
+}
