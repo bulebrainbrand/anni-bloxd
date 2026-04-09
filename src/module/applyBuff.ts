@@ -1,22 +1,6 @@
 /// <reference types="bloxd.io.d.ts/dist/index" />
-import type { InGameEffectName, PlayerId } from "bloxd.io.d.ts";
-interface BuffInfoInterface {
-  name: InGameEffectName;
-  level: number;
-  dura: number;
-}
-const SHORT_BUFF_INFO: BuffInfoInterface[] = [
-  { name: "Damage", dura: 3000, level: 1 },
-  { name: "Damage Reduction", dura: 3000, level: 1 },
-  { name: "Double Jump", dura: 4000, level: 1 },
-] as const;
-
-const LONG_BUFF_INFO: BuffInfoInterface[] = [
-  { name: "Damage", dura: 8000, level: 1 },
-  { name: "Damage Reduction", dura: 8000, level: 1 },
-  { name: "Health Regen", dura: 8000, level: 1 },
-  { name: "Lifesteal", dura: 12000, level: 4 },
-] as const;
+import type { PlayerId } from "bloxd.io.d.ts";
+import { SHORT_BUFF_INFO, LONG_BUFF_INFO } from "../consts";
 
 export const applyShortBuff = (playerId: PlayerId): boolean => {
   const playerBuffs = api.getEffects(playerId);

@@ -1,6 +1,6 @@
+import { INIT_NEXUS_HP } from "../consts";
 import type { TeamName } from "../types/team";
 
-const INIT_NEXUS_HP = 75;
 let nexusHps: Record<TeamName, number> = {
   red: INIT_NEXUS_HP,
   green: INIT_NEXUS_HP,

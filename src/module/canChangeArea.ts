@@ -1,26 +1,4 @@
-const CAN_CHANGE_AREA = [
-  [10000, -499, 10000],
-  [10321, -380, 10321],
-] as const;
-
-const TEAM_BASE_AREAS = [
-  [
-    [10000, -499, 10000],
-    [10030, -380, 10030],
-  ],
-  [
-    [10291, -499, 10000],
-    [10321, -380, 10030],
-  ],
-  [
-    [10000, -499, 10291],
-    [10030, -380, 10321],
-  ],
-  [
-    [10291, -490, 10291],
-    [10321, -380, 10321],
-  ],
-] as const;
+import { CAN_CHANGE_AREA, TEAM_BASE_AREAS } from "../consts";
 
 const isInRect = (
   [x, y, z]: readonly number[],

@@ -7,13 +7,7 @@ import type { TeamName } from "../types/team";
 import { queueMicroTask } from "./microTask";
 import { GamePhaseManager } from "./gamePhaseManager";
 import { mySetInterval } from "./timeout";
-
-const TEAM_TO_ICON: Record<TeamName, ItemName> = {
-  blue: "Blue Popup Tower",
-  green: "Green Popup Tower",
-  red: "Red Popup Tower",
-  yellow: "Yellow Popup Tower",
-};
+import { TEAM_TO_ICON } from "../consts";
 
 const setEveryRightInfoText = (text: string | CustomTextStyling) => {
   for (const id of api.getPlayerIds())

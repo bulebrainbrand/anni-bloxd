@@ -1,15 +1,14 @@
+import {
+  AUTO_DECREMENT_NEXUS_DAMAGE,
+  AUTO_DECREMENT_NEXUS_INTERVAL_MS,
+  PHASE_NEXUS_MULTIHELPER,
+} from "../consts";
 import type { Phase } from "../types/phase";
 import type { TeamName } from "../types/team";
 import { GamePhaseManager } from "./gamePhaseManager";
 import { decrementNexusHP } from "./nexusHpManage";
 import { PhaseManager } from "./phaseManager";
-const PHASE_NEXUS_MULTIHELPER = {
-  1: null,
-  2: 1,
-  3: 2,
-  4: 2,
-  5: 5,
-} as const;
+
 export const breakNexus = (
   team: TeamName,
   phase: Phase,
@@ -22,10 +21,6 @@ export const breakNexus = (
 };
 
 let lastBreak = 0;
-
-const AUTO_DECREMENT_NEXUS_DAMAGE = 5;
-
-const AUTO_DECREMENT_NEXUS_INTERVAL_MS = 5000;
 
 export const tryAutoDecrementNexus = () => {
   if (GamePhaseManager.getPhase() !== 3) return false;

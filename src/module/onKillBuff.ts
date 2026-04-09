@@ -1,20 +1,10 @@
 import { PlayerId } from "bloxd.io.d.ts";
 import { GamePhaseManager } from "./gamePhaseManager";
 import { PhaseManager } from "./phaseManager";
-import { Phase } from "../types/phase";
 import { applyLongBuff, applyShortBuff } from "./applyBuff";
 import { playSoundOnApplyLongBuff, playSoundOnApplyShortBuff } from "./sounds";
-
-type BuffType = "none" | "short" | "long";
-
-const APPLY_BUFF_TYPE_BY_PHASE: Record<Phase | 0, BuffType> = {
-  "0": "none",
-  "1": "none",
-  "2": "none",
-  "3": "none",
-  "4": "short",
-  "5": "long",
-} as const;
+import { APPLY_BUFF_TYPE_BY_PHASE } from "../consts";
+import { BuffType } from "../types/buffType";
 
 export const checkShouldApplyBuffType = (): BuffType => {
   if (GamePhaseManager.getPhase() !== 3) return "none";

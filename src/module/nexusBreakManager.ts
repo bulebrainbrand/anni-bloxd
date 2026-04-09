@@ -5,15 +5,7 @@ import * as NexusHpHandler from "./nexusHpHandler";
 import { GamePhaseManager } from "./gamePhaseManager";
 import { PhaseManager } from "./phaseManager";
 import { getTeam } from "./playerTeam";
-
-const NEXUS_COOEDINATE_LOOKUP: Record<TeamName, Coordinate> = {
-  blue: [1, 1, 1],
-  green: [2, 2, 2],
-  red: [3, 3, 3],
-  yellow: [4, 4, 4],
-} as const;
-
-const NEXUS_BLOCK = "Obsidian";
+import { NEXUS_BLOCK, NEXUS_COOEDINATE_BY_TEAM } from "../consts";
 
 export const isBreakingNexus = (block: BlockName) => block === NEXUS_BLOCK;
 
@@ -29,7 +21,7 @@ const getTeamByNexusCoordinate = (
   y: number,
   z: number,
 ): TeamName | false => {
-  for (const [team, coordinate] of Object.entries(NEXUS_COOEDINATE_LOOKUP)) {
+  for (const [team, coordinate] of Object.entries(NEXUS_COOEDINATE_BY_TEAM)) {
     if (isSameCoordinate(x, y, z, coordinate)) return team as TeamName;
   }
   return false;

@@ -1,10 +1,13 @@
 /// <reference types="bloxd.io.d.ts/dist/index" />
+import {
+  MATCHING_WAITING_MS,
+  PHASE_ELAPSED_TIME_OF_START_PHASE_1,
+} from "../consts";
 import { Phase } from "../types/phase";
 import { GamePhaseManager } from "./gamePhaseManager";
 import { checkCanMatch, doMatching } from "./matching";
 import { PhaseManager } from "./phaseManager";
 
-const MATCHING_WAITING_MS = 60000;
 let nextTryMatchMs = Date.now() + MATCHING_WAITING_MS;
 const runOnCurrentPhase1 = () => {
   GamePhaseManager.movePhase();
@@ -18,29 +21,6 @@ const runOnCurrentPhase2 = () => {
   GamePhaseManager.movePhase();
   // なんかなかったからanyにキャスト
   (api as any).setMaxPlayers(1, 1);
-};
-const ONE_SECOND_ON_MS = 1000;
-const ONE_MINITU_ON_MS = ONE_SECOND_ON_MS * 60;
-
-const PHASE_TIME: Record<Phase, number> = {
-  "1": ONE_MINITU_ON_MS * 5,
-  "2": ONE_MINITU_ON_MS * 10,
-  "3": ONE_MINITU_ON_MS * 10,
-  "4": ONE_MINITU_ON_MS * 20,
-  "5": Infinity,
-} as const;
-
-const PHASE_ELAPSED_TIME_OF_START_PHASE_1: Record<Phase, number> = {
-  "1": PHASE_TIME[1],
-  "2": PHASE_TIME[1] + PHASE_TIME[2],
-  "3": PHASE_TIME[1] + PHASE_TIME[2] + PHASE_TIME[3],
-  "4": PHASE_TIME[1] + PHASE_TIME[2] + PHASE_TIME[3] + PHASE_TIME[4],
-  "5":
-    PHASE_TIME[1] +
-    PHASE_TIME[2] +
-    PHASE_TIME[3] +
-    PHASE_TIME[4] +
-    PHASE_TIME[5],
 };
 
 let timeOfStartPhase1: number = 0;

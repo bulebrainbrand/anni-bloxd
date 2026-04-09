@@ -1,14 +1,14 @@
 /// <reference types="bloxd.io.d.ts/dist/index" />
 
+import { MIN_MATCHING_NUMBER_PLAYER } from "../consts";
 import type { TeamName } from "../types/team";
 import { queueMicroTask } from "./microTask";
 import { joinTeam } from "./playerTeam";
 
-const MIN_MATCHING_NUMBER_PLAYER = 8;
-
 export const checkCanMatch = (): boolean =>
   api.getNumPlayers() >= MIN_MATCHING_NUMBER_PLAYER;
 
+// this value is just for matching lookup,so don't need to move consts.ts
 const COUNT_TO_TEAMNAME_LOOKUP: Record<0 | 1 | 2 | 3, TeamName> = {
   0: "red",
   1: "blue",
