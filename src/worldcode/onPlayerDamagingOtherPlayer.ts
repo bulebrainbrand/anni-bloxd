@@ -1,8 +1,9 @@
+/// <reference types="bloxd.io.d.ts/dist/index" />
 import type { PlayerId, LifeformBodyPart, PlayerDbId } from "bloxd.io.d.ts";
 import { GamePhaseManager } from "../module/gamePhaseManager";
 import { PhaseManager } from "../module/phaseManager";
 import { getTeam } from "../module/playerTeam";
-
+api.setCallbackValueFallback("onPlayerDamagingOtherPlayer", "preventDamage");
 (globalThis as any).onPlayerDamagingOtherPlayer = (
   attackingPlayer: PlayerId,
   damagedPlayer: PlayerId,

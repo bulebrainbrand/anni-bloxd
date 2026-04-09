@@ -1,5 +1,5 @@
 /// <reference types="bloxd.io.d.ts/dist/index" />
-import { InGameEffectName, PlayerId } from "bloxd.io.d.ts";
+import type { InGameEffectName, PlayerId } from "bloxd.io.d.ts";
 interface BuffInfoInterface {
   name: InGameEffectName;
   level: number;

@@ -1,4 +1,4 @@
-import { PlayerId } from "bloxd.io.d.ts";
+import type { PlayerId } from "bloxd.io.d.ts";
 import { getTeam } from "./playerTeam";
 import { getNexusHP } from "./nexusHpManage";
 
