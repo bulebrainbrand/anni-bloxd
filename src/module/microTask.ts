@@ -13,6 +13,7 @@ export const runMicroTask = (): void => {
       console.log(String(error), error?.stack, "on running micro task");
     } finally {
       copyMicroTaskQueue.shift();
+      microTaskQueue.shift();
     }
   }
 };
