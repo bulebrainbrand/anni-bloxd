@@ -17,7 +17,7 @@ const COUNT_TO_TEAMNAME_LOOKUP: Record<0 | 1 | 2 | 3, TeamName> = {
 };
 
 export const doMatching = () => {
-  let count = 0;
+  let count: 0 | 1 | 2 | 3 = 0;
   // sort as random
   for (const id of api.getPlayerIds().sort((a, b) => Math.random() - 0.5)) {
     count++;
@@ -25,8 +25,7 @@ export const doMatching = () => {
     // どうみてもcountは0,1,2,3のどれか
     queueMicroTask(() => {
       // task消化のじかんで人がぬけるかも
-      if (api.checkValid(id))
-        joinTeam(id, COUNT_TO_TEAMNAME_LOOKUP[count as 0 | 1 | 2 | 3]);
+      if (api.checkValid(id)) joinTeam(id, COUNT_TO_TEAMNAME_LOOKUP[count]);
     });
   }
 };
