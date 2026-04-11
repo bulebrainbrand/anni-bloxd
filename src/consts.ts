@@ -4,11 +4,12 @@ import type {
   InGameEffectName,
   ItemName,
 } from "bloxd.io.d.ts";
-import { BuffType } from "./types/buffType";
-import { Phase } from "./types/phase";
-import { TeamName } from "./types/team";
-import { Ore } from "./types/ore";
+import type { BuffType } from "./types/buffType";
+import type { Phase } from "./types/phase";
+import type { TeamName } from "./types/team";
+import type { Ore } from "./types/ore";
 import { ONE_MINITU_ON_MS } from "./utilConsts";
+import { BuffInfoInterface } from "./types/buffInfo";
 
 export const NEXUS_BLOCK_REPLACING_MS = 500;
 
@@ -94,11 +95,6 @@ export const TEAM_BASE_AREAS: [Coordinate, Coordinate][] = [
   ],
 ] as const;
 
-interface BuffInfoInterface {
-  name: InGameEffectName;
-  level: number;
-  dura: number;
-}
 export const SHORT_BUFF_INFO: BuffInfoInterface[] = [
   { name: "Damage", dura: 3000, level: 1 },
   { name: "Damage Reduction", dura: 3000, level: 1 },
